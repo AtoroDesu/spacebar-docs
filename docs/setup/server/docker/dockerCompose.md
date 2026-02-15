@@ -76,17 +76,10 @@ subdomains and ports:
 `api.your.domain` -> `localhost:3002`  
 `cdn.your.domain` -> `localhost:3003`
 
-Create the required folders in the same location as your docker-compose.yml:
-```shell
-mkdir data
-mkdir data/config
-mkdir data/files
-````
-
 Create the .env file with the following variables:
 ```shell
-DATABASE=postgres://ppostgres@spacebar-db/postgres
-CONFIG_PATH=config/config.json
+DATABASE=postgres://postgres:postgres@spacebar-db/postgres
+CONFIG_PATH=config.json
 ```
 
 Run the compose setup for a minute to generate the other required files:
@@ -96,7 +89,7 @@ docker compose up
 Wait until the logs stop moving and it looks like it's finished setting up, then `ctrl+c` to exit.
 
 This will place a few files into the `./data` bind, including `jwt.key` and `jwt.key.pub`, along with a fresh 
-`config.json` file in the `config/` directory.
+`config.json` file.
 
 2. Edit the `config.json` file with your server information
 This covers only what's different for a Docker Compose setup compared to a baremetal install.
